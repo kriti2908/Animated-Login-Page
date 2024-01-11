@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animated login page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+           padding: 0; 
+           box-sizing: border-box;
+       }
+       body{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #25252b;
+       }
+       @property --a{
+        syntax: '<angle>';
+            inherits: false;
+            initial-value: 0deg;
+       }
+       .box{
+        position: relative;
+        height: 200px;
+        width: 400px;
+        background: repeating-conic-gradient(from var(--a),#f7ad24 0%,
+        #f7ad24 5%, transparent 5%, transparent 40%, #f7ad24 50%);
+        filter: drop-shadow(0 15px 50px #000);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        animation: rotating 4s linear infinite;
+        transition: 0.5s;
+       }
+       .box:hover{
+        height: 500px;
+        width: 450px;
+       }
+       @keyframes rotating{
+        0%{
+           --a: 0deg;
+        }
+        100%{
+            --a: 360deg;
+        }
+
+       }
+       .box::before{
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: repeating-conic-gradient(from var(--a),#246ef7  0%,
+        #246ef7  5%, transparent 5%, transparent 40%, #246ef7 50%);
+        filter: drop-shadow(0 15px 50px #000);
+        border-radius: 20px;
+        animation: rotating 4s linear infinite;
+        animation-delay: -1s;
+       }
+       .box::after{
+        content: '';
+        position: absolute;
+        inset: 4px;
+        background: #2d2d39;
+        border-radius: 15px;
+        border: 8px solid #25252b;
+       }
+       .login{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        inset: 60px;
+        border-radius:10px;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        box-shadow: inset 0 10px 20px rgba(0,0,0,0.5) ;
+        border-bottom: 2px solid rgba(255,255,255,0.5);
+        transition: 0.5s;
+        color:#fff;
+        overflow: hidden;
+       }
+       .box:hover.login{
+          inset: 40px;
+       }
+       .loginbox{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        width: 70%;
+        transition: 0.5s;
+        transform: translateY(116px);
+       }
+       .box:hover .loginbox{
+        transform: translateY(0);
+       }
+       .loginbox h2{
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+       }
+       .loginbox h2 i{
+        color: #f7ad24;
+        text-shadow: 0 0 5px #f7ad24, 0 0 25px #f7ad24;
+       }
+       .loginbox input{
+        width: 100%;
+        outline: none;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #fff;
+        background: rgba(0,0,0,0.1);
+        border-radius: 30px;
+        border: 2px solid #fff;
+       }
+       .loginbox input::placeholder{
+        color: #999;
+       }
+       .loginbox input[type="submit"] {
+        border: none;
+        background: #246ef7;
+        cursor: pointer;
+        transition: .5s;
+        font-weight: 500;
+        color: #111;
+       }
+       .loginbox input[type="submit"]:hover{
+        box-shadow: 0 0 10px #246ef7, 0 0 060px #246ef7;
+       }
+       .group{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+       }
+       .group a{
+        color: #fff;
+        text-decoration: none;
+       }
+       .group a:nth-child(2){
+        color: #f7ad24;
+        font-weight: 600;
+       }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="login">
+            <div class="loginbox">
+              <h2><i class="fa-solid fa-right-to-bracket"></i>Login<i class="fa-solid fa-heart"></i></h2>
+              <input type="text" placeholder="Username">
+              <input type="password" placeholder="password">
+            
+              <input type="submit" value="sign in">
+              <div class="group">
+                <a href="">Forgot Password</a>
+                <a href="">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
